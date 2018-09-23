@@ -1,28 +1,27 @@
 import React from 'react';
 import { Route, Switch, Redirect, Link } from 'react-router-dom';
+//使用 react 编写代码时，能让修改的部分自动刷新。
+import { hot } from 'react-hot-loader';
 
 
 
-const Index = () => {
-  return <div>Hello React! <p><Link to="/home">Home</Link></p></div>
-};
+import Home from '../containers/Home/index';
+import User from '../containers/User/index';
 
-const HomePage =() => <div>Home Page <p><Link to="/user">User</Link></p><p><Link to="/">Index</Link></p></div>;
-const UsersPage = () => <div>Users Page <p><Link to="/home">Home</Link></p></div>
 
 const Root = () => (
 	<div>
 		<Switch>
-			<Route exact path="/" component= {Index} />
-			<Route path="/home" component= {HomePage} />
-			<Route path="/user" component= {UsersPage} />
+			<Route exact path="/" component= {Home} />
+			<Route exact path="/user" component= {User} />
 			<Redirect to="/" />
 		</Switch>
 	</div>
 );
-export default Root;
-//export default hot(module)(Root);
 
+
+export default hot(module)(Root);
+//
 /*
 	router4 说明
 	exact 关键词，表示只对当前的路由进行匹配。
@@ -107,6 +106,8 @@ export default Root;
 	}
 
 
+	//React Router 4.0：使用 babel-plugin-syntax-dynamic-import + react-loadable 实现按需加载
+	https://segmentfault.com/a/1190000012545692
 
 
 */

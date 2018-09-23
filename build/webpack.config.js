@@ -17,7 +17,7 @@ module.exports = {
   //production模式特性: a.开启所有的优化代码 b.更小的bundle大小 c.去除掉只在开发阶段运行的代码 d.Scope hoisting和Tree-shaking
 
   entry: [
-    //"webpack/hot/only-dev-server",
+    "webpack/hot/only-dev-server",
     "./src/index.js"
   ], 
 
@@ -51,7 +51,8 @@ module.exports = {
         secure: false,
       }
     },
-    //
+    //所有的路径都执行index.html
+    historyApiFallback : true,
     watchOptions: {
       ignored: /node_modules/, //忽略不用监听变更的目录
       aggregateTimeout: 300, //防止重复保存频繁重新编译,500毫米内重复保存不打包
@@ -112,8 +113,8 @@ module.exports = {
           'file-loader',
         ],
       },
+
       {
-        //test: /\.(css|scss|less)$/,
         test: /\.css|less$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader', 
@@ -141,6 +142,7 @@ module.exports = {
         }),
         exclude: /node_modules/,
       }
+      
     ]
   },
   plugins: [
