@@ -1,0 +1,59 @@
+{
+  "name": "integral_mall",
+  "version": "1.0.0",
+  "description": "integral mall",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --mode=development --open --hot",
+    "build": "NODE_ENV=production webpack --mode production  --progress  --color --config=build/webpack.config.js",
+    "server": "NODE_ENV=dev webpack-dev-server --mode development  --config=build/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/275957304/react_mall.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "route",
+    "anted-mobile",
+    "es6",
+    "less",
+    "jsx"
+  ],
+  "author": "QQ275957304",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/275957304/react_mall/issues"
+  },
+  "homepage": "https://github.com/275957304/react_mall#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^2.0.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^0.23.0",
+    "url-loader": "^1.1.1",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
+  }
+}
