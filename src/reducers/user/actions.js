@@ -25,3 +25,9 @@ export function getUser() {
         //dispatch({ type: GET_MEMBER_LIST, msg: res })
    };
 }
+
+// 返回状态
+// export const changeBackStatus = playLoad => ({
+//   type: 'CHANGE_BACK_STATUS',
+//   playLoad
+// })

@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 //优化 webpack 输出信息
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
-console.log(process.env.NODE_ENV)
+console.log(process.env.NODE_ENV);
 
 //const UglifyJSPlugin = require('uglifyjs-webpack-plugin'); //new UglifyJSPlugin() 用于压缩 JS 代码，减少资源体积大小
 
@@ -176,6 +176,7 @@ module.exports = {
 
 /*
 注意事项
+在开发环境 prop-types 插件来验证数据
 
 
 热更新：在使用热更新时，我们的 chunk 名中不能使用 [hash] 做标识，文件名变化无法热更新，所以需要将原来配置在公共配置中的 output 中的文件名配置分别写入生产和开发模式配置中，开发模式去掉 [hash]

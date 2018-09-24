@@ -9,6 +9,16 @@ const userInfo = {
     device : '',
 }
 export default function user(state = userInfo, action ){
-    return state
+	// switch(action.type){
+	// 	case types.LOGIN_USER_SUCCESS:
+	// 		return {
+	// 			...state,
+	// 			title: action.playLoad
+	// 		}
+	// 	default:
+	// 		return state
+
+	// }
+	return state
 }
 
