@@ -21,7 +21,7 @@ export default class Home extends Component {
       		<section>	
       			<h2>{this.state.name}</h2>
       			<Link to="/user">user</Link>
-      			
+      			<Button type="ghost" size="small" inline>small</Button>
       		</section>
       	</div>
 

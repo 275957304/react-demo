@@ -2,9 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const cleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 //优化 webpack 输出信息
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+
+console.log(process.env.NODE_ENV)
 
 //const UglifyJSPlugin = require('uglifyjs-webpack-plugin'); //new UglifyJSPlugin() 用于压缩 JS 代码，减少资源体积大小
 
@@ -78,14 +80,14 @@ module.exports = {
           chunks: "all",
           priority: 10
           // enforce: true
-        },
-        styles:{
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          minChunks: 2,
-          enforce: true
-        }
+        }//,
+        // styles:{
+        //   name: 'styles',
+        //   test: /\.css$/,
+        //   chunks: 'all',
+        //   minChunks: 2,
+        //   enforce: true
+        // }
       }
     }
   },
@@ -103,7 +105,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          outputPath: 'images/', // 图片输出的路径
+          outputPath: 'images', // 图片输出的路径
           limit: 5 * 1024
         },
       },
@@ -115,33 +117,27 @@ module.exports = {
       },
 
       {
-        test: /\.css|less$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader', 
-          use:[
-            {
-              loader: "css-loader",
-              options: {
-                  sourceMap: true
-              }
-            },
-            {
-                loader: 'postcss-loader',
+            // test 表示测试什么文件类型
+            test:/\.(css|less)$/,
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader,
                 options: {
-                    sourceMap: true
+                  // (segmentfault 这儿的多行注释渲染有点问题 😰，改成单行注释形式)
+                  // 复写 css 文件中资源路径
+                  // webpack3.x 配置在 extract-text-webpack-plugin 插件中
+                  // 因为 css 文件中的外链是相对与 css 的，
+                  // 我们抽离的 css 文件在可能会单独放在 css 文件夹内
+                  // 引用其他如 img/a.png 会寻址错误
+                  // 这种情况下所以单独需要配置 publicPath，复写其中资源的路径
+                  //
+                  publicPath: '../' 
                 }
-            },
-            {
-              loader: "less-loader",
-              options: {
-                  sourceMap: true
-              }
-            }
-
-          ]
-        }),
-        exclude: /node_modules/,
-      }
+              },
+              {loader: 'css-loader',options: {}},
+              {loader: 'less-loader',options: {}}
+            ]
+        }
       
     ]
   },
@@ -164,12 +160,9 @@ module.exports = {
       }
     }),  
 
-
-    new ExtractTextPlugin({
-        //publicPath : "css/",
-        filename: "[name].min.css",  //这里可以在前面加文件名，但会影响到图片的路
-        disable: true
-    })
+    new MiniCssExtractPlugin({
+         filename: 'css/[name].css'
+     })
 
   ],
   resolve: {
