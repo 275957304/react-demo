@@ -4,13 +4,12 @@
   "description": "integral mall",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode=development --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --mode production  --progress  --color --config=build/webpack.config.js",
-    "server": "cross-env NODE_ENV=dev webpack-dev-server --mode development  --config=build/webpack.config.js"
+    "build": "cross-env NODE_ENV=production webpack --progress  --color --config=build/webpack.prod.js",
+    "server": "cross-env NODE_ENV=dev webpack-dev-server --color --config ./build/webpack.dev.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/275957304/react_mall.git"
+    "url": "git@https://github.com/275957304/react_mall.git"
   },
   "keywords": [
     "react",
@@ -21,7 +20,7 @@
     "less",
     "jsx"
   ],
-  "author": "QQ275957304",
+  "author": "tw",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/275957304/react_mall/issues"
@@ -32,6 +31,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.1.5",
+    "axios": "^0.18.0",
     "babel-loader": "^8.0.0",
     "babel-plugin-import": "^1.9.1",
     "clean-webpack-plugin": "^0.1.19",
@@ -43,16 +43,18 @@
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.3",
+    "postcss-adaptive": "^0.5.0",
     "postcss-loader": "^3.0.0",
+    "postcss-pxtorem": "^4.0.1",
     "style-loader": "^0.23.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-dev-server": "^3.1.8",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "antd-mobile": "^2.2.5",
-    "axios": "^0.18.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-hot-loader": "^4.3.11",

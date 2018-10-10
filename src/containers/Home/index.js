@@ -4,24 +4,30 @@ import { Link } from 'react-router-dom';
 import { Button } from 'antd-mobile';
 
 
+import { getMyList} from '../../api/index'
+
 
 class Home extends Component {
    constructor(props) {
       super(props);
       this.state = {
-      	name : 'react-home'
+          name : 'react-home',
+          userInfo : {}
       }
    }
    componentDidMount(){
-   		console.log('componentDidMount')
-         console.log(this.props);
+                
+    getMyList().then(res => {
+            console.log('商品列表');
+            console.log(res)  
+
+        })
+        
    }
    handleClick (){
       //这里请求数据
-      console.log('getData');
-      console.log(this.props)
-
-
+        //   console.log('getData');
+    //  console.log(this.props)
       // axios去请求数据 
       //const { dispatch, } = this.props
       //dispatch()
